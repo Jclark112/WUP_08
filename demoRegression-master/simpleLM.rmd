@@ -1,7 +1,7 @@
 ---
 title: "simpleRegress"
-author: "put your name here"
-date: "Fall 2020"
+author: "Juliet Clark"
+date: "Summer 2024"
 output: html_document
 ---
 
@@ -30,3 +30,60 @@ summary.lm(simp)
 
 ## Compare all models that predict LENGTH other than NECK. Then order them from worst to best by its value of Adjusted-Rsquared (bigger is better), or by RSE (residual standard error) where smaller is better. 
 
+## length based on age
+
+```{r}
+ageModel <- lm(LENGTH~AGE,data=bears)
+plot(LENGTH~AGE,data=bears)
+abline(ageModel)
+summary.lm(ageModel)
+```
+
+Adjusted r^2 for the age model which is 5.1, this is less than the adjusted r^2 for the neck. This model is not as good as the neck model. 
+
+```{r}
+chestModel <- lm(LENGTH~CHEST,data=bears)
+plot(LENGTH~CHEST,data=bears)
+abline(chestModel)
+summary.lm(chestModel)
+```
+
+Adjusted r^2 for the age model which is 0.79, this is less than the adjusted r^2 for the neck. This model is not as good as the neck model. 
+
+```{r}
+headwidthModel <- lm(LENGTH~HEADWTH,data=bears)
+plot(LENGTH~HEADWTH,data=bears)
+summary.lm(headwidthModel)
+```
+
+Headwidth r^2 os 0.53 which is not as well as the other values. 
+
+```{r}
+sexModel <- lm(LENGTH~SEX,data=bears)
+plot(LENGTH~SEX,data=bears)
+summary.lm(sexModel)
+```
+
+Sex r^2 value is 0.08 which is the lowest score of all.
+
+
+```{r}
+headlenModel <- lm(LENGTH~HEADLEN,data=bears)
+plot(LENGTH~HEADLEN,data=bears)
+abline(headlenModel)
+summary.lm(headlenModel)
+```
+
+Headlength r^2 value is 0.84 which is the highest value. 
+
+```{r}
+weightModel <- lm(LENGTH~WEIGHT,data=bears)
+plot(LENGTH~WEIGHT,data=bears)
+abline(weightModel)
+summary.lm(weightModel)
+```
+
+Weight r^2 value is 0.74 which is the second best value. 
+
+#### Conclusion
+The model LENGTH~HEADLENGTH is the best indicator comparison with r^2 is 0.84. Followed by 0.78 with CHEST, 0.743 with WEiGHT, 0.53 in HEADWIDTH, 0.50 in AGE, and lastly SEX with a value of 0.08.
